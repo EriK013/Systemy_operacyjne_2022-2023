@@ -1,0 +1,85 @@
+=============================================================
+Autor: Eryk Stępień
+Kraków, 22.03.2023
+=============================================================
+* Zawartość
+===========
+
+Katalog zawiera 5 programow napisanych w języku C, bedacych rozwiazaniami polecen z ćwiczenia 1 (Procesy)
+-------------------------------------------------------------
+
+I. Program wypisujacy na ekranie identyfikatory UID, GID, PID, PPID i PGID dla danego procesu.
+    Przykładowy output:
+    UID: 1000
+    GID: 1000
+    PID: 6133
+    PPID: 6107
+    PGID: 6107
+    1) 1a.c - program glowny
+
+II. Program wywołujący funkcje fork() w petli od 1 do 3 wlacznie. Wypisuje on identyfikatory dla procesu macierzystego oraz kazdego z procesow potomnych. Funkcja macierzysta czeka na zakonczenie wszystkich swoich procesow potomnych.
+    Output: W pierwszej kolejnosci wyswietlany jest identyfikator proesu macierzystego.
+    Nastepnie wyswietlane sa identyfikatory procesow potomnych. W konsekwencji dzialania
+    programu powstanie 7 procesow potomnych. Przy zakonczeniu dzialania jednego z procesow potomnych
+    wyswietlany jest komunikat "Proces skończył czekać {PID procesu macierzystego ktorego potomek zakonczył
+    działanie} {PID procesu macierzystego wcześniej wspomnianego procesu}. W ten sposób łatwo jest prześledzić działanie programu
+    1) 1b.c - program glowny
+
+III. Program, ktory wywołuje funkcje fork() w petli od 1 do 3 i za pomoca funkcji sleep() sprawia, że procesy potomne sa adoptowane
+przez init lub systemd. W celu zidentyfikowania procesu adoptujacego w pstree -p nalezy znalezc proces o PID rownym PPID kazdego
+z osieroconych procesow potomnych.
+    Przykladowy output:
+    Proces macierzysty UID: 1000, GID: 1000, PID: 17724, PPID: 17717, PGID: 17717
+    Proces potomny  UID: 1000, GID: 1000, PID: 17725, PPID: 1, PGID: 17717
+    Proces potomny  UID: 1000, GID: 1000, PID: 17738, PPID: 1, PGID: 17717
+    Proces potomny  UID: 1000, GID: 1000, PID: 17754, PPID: 1, PGID: 17717
+    ...
+    1) 1c.c - program glowny
+
+IV. Program jak II i III. Przy pomocy funkcji sleep() grupuje procesy od najstarszego pokolenia.
+Drzewo genealogiczne procesow znajduje sie w pliku 2).
+    Przykladowy output: Znajduje sie w pliku programu glownego w postaci komentarza
+    1) 1d.c - program glowny
+    2) Drzewo genaologiczne.txt - plik tekstowy z drzewem genaologicznym procesow
+
+V. Program o wywołaniu funkcji fork() jak w poprzednich programach. Za pomocą setpgid() sprawia, ze
+kazdy proces potomny staje sie liderem swojej grupy. Na koncu programu w formie komentarza znajduje 
+sie odpowiedz na pytanie z zadania.
+    1) 1e.c - program glowny
+
+-------------------------------------------------------------
+
+* Jak uruchomic programy:
+=========================
+
+Katalog zawiera program Makefile do kompilacji, linkowania
+i uruchamiania powyzszych programow, a takze czyszczenia katalogu 
+i jego archiwizacji.
+
+-> Aby uruchomic 1-szy program, nalezy wykonac komende:
+       make run1
+
+-> Aby uruchomic drugi program, nalezy wykonac komende:
+       make run2
+
+-> Aby uruchomic trzeci program, nalezy wykonac komende:
+       make run3
+
+-> Aby uruchomic czwarty program, nalezy wykonac komende:
+       make run4
+
+-> Aby uruchomic piaty program, nalezy wykonac komende:
+       make run5
+
+---> Dla pewnosci, ze wykonywane sa polecenia zdefiniowane w Makefile,
+     a nie wbudowane polecenia make'a, uzyc opcji -r, tzn.
+       make -r run{} 
+    gdzie w {} wstawic liczbe od 1-5 odpowiadajaca konkretnemu programowi
+
+-> Aby wyczyscic zawartosc katalogu (usunac zbedne pliki), nalezy wykonac:
+       make clean
+
+-> W celu archiwizacji oraz kompresji katalogu nalezy wykonac:
+       make tar
+
+=============================================================
