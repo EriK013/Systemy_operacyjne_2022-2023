@@ -1,0 +1,42 @@
+=============================================================
+Autor: Eryk Stępień
+Kraków, 22.03.2023
+=============================================================
+* Zawartość
+===========
+
+Katalog zawiera program napisanyw języku C, bedacy rozwiazaniem polecenia z ćwiczenia 4 (Potoki)
+-------------------------------------------------------------
+
+I. Program przy pomocy potoków nienazwanych przedstawia problem "Producenta i konsumenta".
+Surowiec pobierany jest z pliku "surowiec.txt" a konsument umieszcza towar w pliku "towar.txt". 
+Program zgodnie z poleceniem nie wykorzystuje printf ale wypisuje na ekran przy użyciu funkcji write.
+Po działaniu programu przy uruchomieniu "make run1" pliki są porównywane za pomocą diff -s
+    1) 4.c - program główny
+    2) surowiec.txt - plik z tekstem 'surowcem'
+    3) towar.txt - plik do którego zapisywany jest towar
+
+-------------------------------------------------------------
+
+* Jak uruchomic programy:
+=========================
+
+Katalog zawiera program Makefile do kompilacji, linkowania
+i uruchamiania powyzszych programow, a takze czyszczenia katalogu 
+i jego archiwizacji.
+
+-> Aby uruchomic 1-szy program, nalezy wykonac komende:
+       make run1
+
+---> Dla pewnosci, ze wykonywane sa polecenia zdefiniowane w Makefile,
+     a nie wbudowane polecenia make'a, uzyc opcji -r, tzn.
+       make -r run{} 
+    gdzie w {} wstawic liczbe od 1 odpowiadajaca konkretnemu programowi
+
+-> Aby wyczyscic zawartosc katalogu (usunac zbedne pliki), nalezy wykonac:
+       make clean
+
+-> W celu archiwizacji oraz kompresji katalogu nalezy wykonac:
+       make tar
+
+=============================================================

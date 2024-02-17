@@ -1,0 +1,46 @@
+=============================================================
+Autor: Eryk Stępień
+Kraków, 10.05.2023
+=============================================================
+* Zawartość
+===========
+
+Katalog zawiera programy napisane w języku C, bedace rozwiazaniami polecen z ćwiczenia 6 (Semafory)
+-------------------------------------------------------------
+
+I. Programy, które przy pomocy semaforów nazwanych standardu POSIX implementują zadanie
+wzajemnego wykluczenia dla procesów. Czas operacji na wspólnym zasobie symulowany jest za 
+pomocą "sleep". Program wysyła odpowiednie komunikaty informujące o procesie synchronizacji procesów.
+    1) powielacz_procesow.c 
+    2) wzajemne_wykluczenie.c - program realizujący wzajemne wykluczenie
+    3) semafory.C } biblioteka 
+    4) semafory.h }
+
+-------------------------------------------------------------
+
+* Jak uruchomic programy:
+=========================
+
+Katalog zawiera program Makefile do kompilacji, linkowania
+i uruchamiania powyzszych programow, a takze czyszczenia katalogu 
+i jego archiwizacji.
+
+-> W pierwszej kolejnosci, nalezy wykonac komende:
+       make all
+-> Utworzy to programy wykonawcze potrzebne do uruchomienia programow wykorzystujacych execlp 
+
+-> Aby uruchomic 1-szy program, nalezy wykonac komende:
+       make run1 l_p={liczba procesów} l_s={liczba sekcji krytycznych}
+
+---> Dla pewnosci, ze wykonywane sa polecenia zdefiniowane w Makefile,
+     a nie wbudowane polecenia make'a, uzyc opcji -r, tzn.
+       make -r run{} 
+    gdzie w {} wstawic liczbe od 1 odpowiadajaca konkretnemu programowi
+
+-> Aby wyczyscic zawartosc katalogu (usunac zbedne pliki), nalezy wykonac:
+       make clean
+
+-> W celu archiwizacji oraz kompresji katalogu nalezy wykonac:
+       make tar
+
+=============================================================

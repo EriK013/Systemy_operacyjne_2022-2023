@@ -1,0 +1,48 @@
+=============================================================
+Autor: Eryk Stępień
+Kraków, 29.03.2023
+=============================================================
+* Zawartość
+===========
+
+Katalog zawiera jeden program napisany w języku C, bedacy rozwiazaniami polecenia z ćwiczenia 2 (Procesy)
+-------------------------------------------------------------
+
+I. Program wywołujący funkcję fork() w pętli od 1 do 3. Wypisuje on identyfikatory dla procesu macierzystego
+a dla procesów potomnych wywołuje funkcje execlp, która uruchamia program wypisujący identyfikatory dla 
+procesów potomnych. W ten sposób powstanie tyle procesów potomnych ile razy zostanie wywołana funkcja fork() w pętli.
+W naszym przypadku będą to trzy procesy potomne. Dzieje się tak dlatego, że procesy potomne wykonują program przekazany
+w funkcji execlp dzięki czemu możliwe jest ominięcie wykonania pętli dla procesu potomnego.
+    Przykładowy output:
+    Proces macierzysty UID: 1000, GID: 1000, PID: 9751, PPID: 9732, PGID: 9732 
+    Proces potomny UID: 1000, GID: 1000, PID: 9753, PPID: 9751, PGID: 9732 
+    Proces potomny UID: 1000, GID: 1000, PID: 9756, PPID: 9751, PGID: 9732 
+    Proces potomny UID: 1000, GID: 1000, PID: 9760, PPID: 9751, PGID: 9732 
+    1) 2a.c - program główny
+    2) execlp.c - program wypisujący identyfikatory procesów
+
+-------------------------------------------------------------
+
+* Jak uruchomic programy:
+=========================
+
+Katalog zawiera program Makefile do kompilacji, linkowania
+i uruchamiania powyzszych programow, a takze czyszczenia katalogu 
+i jego archiwizacji.
+
+-> Aby uruchomic program, nalezy wykonac komende:
+       make run1
+
+
+---> Dla pewnosci, ze wykonywane sa polecenia zdefiniowane w Makefile,
+     a nie wbudowane polecenia make'a, uzyc opcji -r, tzn.
+       make -r run{} 
+    gdzie w {} wstawic liczbe od 1.
+
+-> Aby wyczyscic zawartosc katalogu (usunac zbedne pliki), nalezy wykonac:
+       make clean
+
+-> W celu archiwizacji oraz kompresji katalogu nalezy wykonac:
+       make tar
+
+=============================================================

@@ -1,0 +1,45 @@
+Kraków, 18.05.2023
+=============================================================
+* Zawartość
+===========
+
+Katalog zawiera programy napisane w języku C, bedace rozwiazaniami polecen z ćwiczenia 7 (Pamięć dzielona i semafory)
+-------------------------------------------------------------
+
+I. Programy będące rozwiązaniem ćwiczenia 7 (Pamięć dzielona i semafory)
+    1) zad7.c - program główny
+    2) konsument.c - program konsumenta
+    3) producent.c - program producenta
+    4) pamiec.c i pamiec.h - programy biblioteki
+
+-------------------------------------------------------------
+
+* Jak uruchomic programy:
+=========================
+
+Katalog zawiera program Makefile do kompilacji, linkowania
+i uruchamiania powyzszych programow, a takze czyszczenia katalogu 
+i jego archiwizacji.
+
+-> W pierwszej kolejnosci, nalezy wykonac komende:
+       make all
+-> Utworzy to programy wykonawcze potrzebne do uruchomienia programow wykorzystujacych execlp 
+
+-> Aby uruchomic program korzystając z biblioteki statycznej:
+    make run1static
+
+-> Aby uruchomić program korzystając z biblioteki dzielonej
+    make run1dynamic
+
+---> Dla pewnosci, ze wykonywane sa polecenia zdefiniowane w Makefile,
+     a nie wbudowane polecenia make'a, uzyc opcji -r, tzn.
+       make -r run{} 
+    gdzie w {} wstawic liczbe od 1 odpowiadajaca konkretnemu programowi
+
+-> Aby wyczyscic zawartosc katalogu (usunac zbedne pliki), nalezy wykonac:
+       make clean
+
+-> W celu archiwizacji oraz kompresji katalogu nalezy wykonac:
+       make tar
+
+=============================================================

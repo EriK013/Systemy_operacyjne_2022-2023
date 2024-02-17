@@ -1,0 +1,38 @@
+Kraków, 31.05.2023
+=============================================================
+* Zawartość
+===========
+
+Katalog zawiera program napisany w języku C, bedacy rozwiazaniem polecenia z ćwiczenia 9
+-------------------------------------------------------------
+
+I. Programy będące rozwiązaniem ćwiczenia 8
+    1) zad9.c - program główny
+
+-------------------------------------------------------------
+
+* Jak uruchomic programy:
+=========================
+
+Katalog zawiera program Makefile do kompilacji, linkowania
+i uruchamiania powyzszych programow, a takze czyszczenia katalogu 
+i jego archiwizacji.
+
+-> W pierwszej kolejnosci, nalezy wykonac komende:
+       make all
+
+-> Aby uruchomic program:
+    make run1 l_s={liczba sekcji} l_w={liczba wątków}
+
+---> Dla pewnosci, ze wykonywane sa polecenia zdefiniowane w Makefile,
+     a nie wbudowane polecenia make'a, uzyc opcji -r, tzn.
+       make -r run{} 
+    gdzie w {} wstawic liczbe od 1 odpowiadajaca konkretnemu programowi
+
+-> Aby wyczyscic zawartosc katalogu (usunac zbedne pliki), nalezy wykonac:
+       make clean
+
+-> W celu archiwizacji oraz kompresji katalogu nalezy wykonac:
+       make tar
+
+=============================================================

@@ -1,0 +1,55 @@
+=============================================================
+Autor: Eryk Stępień
+Kraków, 22.03.2023
+=============================================================
+* Zawartość
+===========
+
+Katalog zawiera programy napisane języku C, bedace rozwiazaniem polecenia z ćwiczenia 5 (Potoki)
+-------------------------------------------------------------
+
+I. Program przy pomocy potoków nazwanych przedstawia problem "Producenta i konsumenta".
+Surowiec pobierany jest z pliku "surowiec.txt" a konsument umieszcza towar w pliku "towar.txt". 
+Program usuwa potok przy wywołaniu funkcji atexit.
+Po działaniu programu przy uruchomieniu "make run1" pliki są porównywane za pomocą diff -s
+    1) 5a.c - program główny
+    2) surowiec.txt - plik z tekstem 'surowcem'
+    3) towar.txt - plik do którego zapisywany jest towar
+
+II. Dwa programy, z których jeden jest Producentem a drugi Konsumentem. Działają
+one w oddzielnych terminalach przy wywołaniu funkcji xterm w pliku makefile
+       1) 5bKonsument.c - program pełniący funkcję konsumenta
+       2) 5bProducent.c - program pełniący funkcję producenta
+       3) surowiec.txt - jak w I
+       4) towar.txt - jak w I
+
+-------------------------------------------------------------
+
+* Jak uruchomic programy:
+=========================
+
+Katalog zawiera program Makefile do kompilacji, linkowania
+i uruchamiania powyzszych programow, a takze czyszczenia katalogu 
+i jego archiwizacji.
+
+Przed uruchomieniem programów należy wykonać komende:
+       make all
+
+-> Aby uruchomic 1-szy program, nalezy wykonac komende:
+       make run1
+
+-> Aby uruchomic drugi program, nalezy wykonac komende:
+       make run2
+
+---> Dla pewnosci, ze wykonywane sa polecenia zdefiniowane w Makefile,
+     a nie wbudowane polecenia make'a, uzyc opcji -r, tzn.
+       make -r run{} 
+    gdzie w {} wstawic liczbe od 1-2 odpowiadajaca konkretnemu programowi
+
+-> Aby wyczyscic zawartosc katalogu (usunac zbedne pliki), nalezy wykonac:
+       make clean
+
+-> W celu archiwizacji oraz kompresji katalogu nalezy wykonac:
+       make tar
+
+=============================================================

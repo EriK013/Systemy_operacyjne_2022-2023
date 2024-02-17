@@ -1,0 +1,62 @@
+=============================================================
+Autor: Eryk Stępień
+Kraków, 22.03.2023
+=============================================================
+* Zawartość
+===========
+
+Katalog zawiera 3 programy napisane w języku C, bedace rozwiazaniami polecen z ćwiczenia 3 (Sygnały)
+-------------------------------------------------------------
+
+I. Program do obsługi sygnalow z mozliwosciami wykonywania operacji domyślnej
+ignorowania sygnalow oraz ich przechwycania i wlasnej obslugi
+       1) 3a.c - program główny
+
+II. Program uruchamiający osbluge sygnalow z poporzez funkcje execlp w procesie potomnym inne procesu. 
+Wysyla on sygnaly do procesu potomnego poprzez funkcje kill a nastepnie czeka na zakonczenie procesu potomnego, 
+wypisuje jego PID i status zakonczenia. W przypadku zakonczenia przez sygnal wypisuje numer tego sygnalu oraz jego nazwe.
+       1) 3b.c - program glowny
+       2) bexeclp.c - program zawierajacy kod procesu potomnego 
+
+III. Program tworzacy proces potomny i nadajacy mu status lidera. Proces ten uruchamiany jest przez funkcje execlp. 
+Program ignoruje sygnaly wysylane przez proces macierzysty. Tworzy on trzy procesy potomne ktore sa programami do obslugi sygnalow. 
+Proces macierzysty wysyla 3 sygnaly do grupy procesow. W przypadku zakonczenia zachowuje sie analogicznie do programu II.
+       1) 3c.c - program glowny
+       2) 1cexeclp.c - program zawierajacy kod procesu potomnego ('lidera grupy')
+       3) 2cexeclp.c - program do obslugi sygnalow
+
+
+-------------------------------------------------------------
+
+* Jak uruchomic programy:
+=========================
+
+Katalog zawiera program Makefile do kompilacji, linkowania
+i uruchamiania powyzszych programow, a takze czyszczenia katalogu 
+i jego archiwizacji.
+
+-> W pierwszej kolejnosci, nalezy wykonac komende:
+       make all
+-> Utworzy to programy wykonawcze potrzebne do uruchomienia programow wykorzystujacych execlp 
+
+-> Aby uruchomic 1-szy program, nalezy wykonac komende:
+       make run1 met={przechwyc/ignoruj/dowolna_komenda_traktowana_jako_op_domyslna} num={numer sygnalu}
+
+-> Aby uruchomic drugi program, nalezy wykonac komende:
+       make run2 met={przechwyc/ignoruj/dowolna_komenda_traktowana_jako_op_domyslna} num={numer sygnalu}
+
+-> Aby uruchomic trzeci program, nalezy wykonac komende:
+       make run3 met={przechwyc/ignoruj/dowolna_komenda_traktowana_jako_op_domyslna} num={numer sygnalu}
+
+---> Dla pewnosci, ze wykonywane sa polecenia zdefiniowane w Makefile,
+     a nie wbudowane polecenia make'a, uzyc opcji -r, tzn.
+       make -r run{} 
+    gdzie w {} wstawic liczbe od 1-3 odpowiadajaca konkretnemu programowi
+
+-> Aby wyczyscic zawartosc katalogu (usunac zbedne pliki), nalezy wykonac:
+       make clean
+
+-> W celu archiwizacji oraz kompresji katalogu nalezy wykonac:
+       make tar
+
+=============================================================
